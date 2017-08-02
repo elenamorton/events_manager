@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 group :test do
     gem 'database_cleaner'
-    gem 'capybara'
     gem 'rspec'
     gem 'rubocop'
     gem 'simplecov', require: false
