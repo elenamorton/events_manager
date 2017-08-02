@@ -19,6 +19,7 @@ require 'database_cleaner'
 require 'simplecov'
 require 'simplecov-console'
 require 'rspec'
+require './app/models/place'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
