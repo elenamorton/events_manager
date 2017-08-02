@@ -1,19 +1,25 @@
-require 'data_mapper'
-require 'dm-postgres-adapter'
-
 class Place
+    
+    X_MIN = -10
+    X_MAX = 10
+    Y_MIN = -10
+    Y_MAX = 10
+    X_COORDINATES = [X_MIN..X_MAX]
+    Y_COORDINATES = [Y_MIN..Y_MAX]
+    DISTANCE_MAX = X_MAX - X_MIN + Y_MAX- Y_MIN
+    
     # add DataMapper functionality to this class so it can communicate with the database
     include DataMapper::Resource
     
     # these property declarations set the column headers in the 'Places' table
     property :id,           Serial
-    property :position_x,   Integer, required: true
-    property :position_y,   Integer, required: true
+    property :x_position,   Integer, required: true
+    property :y_position,   Integer, required: true
    
-    # setup the connection with the database
-    DataMapper.setup(:default, "postgres://localhost/events_manager_test")
-    # check that what is written in our models was OK
-    DataMapper.finalize
-    # build new columns or tables added
-    DataMapper.auto_upgrade!
+    def initialize(x_position = X_COORDINATES.sample, y_position = Y_COORDINATES.sample)
+        @x_position = x_position
+        @y_position = y_position
+    end
+
+
 end
